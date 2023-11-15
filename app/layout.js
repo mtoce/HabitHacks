@@ -19,7 +19,7 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       <body className={roboto.className}>
         <Provider>
-          <main>
+          <main className=''>
             <Nav />
             {children}
           </main>
