@@ -13,6 +13,7 @@ const Nav = () => {
         </div>
         {/* NavLinks Container */}
         <div>
+            {/* Change these to buttons in the future? */}
             <ul className='flex flex-row gap-6'>
                 {navLinks.map((link, index) => (
                     <li key={link.id} className=''>

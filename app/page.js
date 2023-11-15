@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import { Dashboard, Feed, Footer, Habits, Nav, Profile } from '../components';
+import { Dashboard, Feed, Footer, Habits, Nav, Profile, HabitCard } from '../components';
 
 const Home = () => {
   return (
     <section className='app'>
-      <Dashboard />
+      <HabitCard />
     </section>
   )
 }
