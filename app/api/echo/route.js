@@ -8,6 +8,6 @@ export async function GET(request) {
     const obj = Object.fromEntries(searchParams.entries())
     
   // return NextResponse.json({ name, instrument })
-  return NextResponse.json({ name, instrument })
+  return NextResponse.json(obj)
 
 }

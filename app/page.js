@@ -1,10 +1,12 @@
 import Image from 'next/image'
-import { Dashboard, Feed, Footer, Habits, Nav, Profile, HabitCard } from '../components';
+import { ToDoSection, HabitCard } from '../components';
+import { areaLinks, tagLinks } from '@/constants';
 
 const Home = () => {
   return (
     <section className='app'>
-      <HabitCard />
+      {/* <HabitCard /> */}
+      <ToDoSection areas={areaLinks} tags={tagLinks} />
     </section>
   )
 }

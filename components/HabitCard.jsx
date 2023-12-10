@@ -1,19 +1,18 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
-import meditation from '@/public/meditation.svg'
-import fire from '@/public/fire.svg'
+import MeditationIcon from '@/public/Meditation.svg'
+import FireIcon from '@/public/Fire.svg'
+import BanIcon from '@/public/Ban.svg'
+
+
 
 const HabitCard = () => {
   return (
     <div className='flex flex-row items-center justify-between w-[350px] h-[100px] bg-neutral-900 rounded-md'>
         {/* Left div, containing the habit logo */}
         <div className='flex items-center flex-center pl-4'>
-            <Image 
-                src={meditation}
-                alt='Meditation Logo'
-                width={50}
-                height={50}
-            />
+            <MeditationIcon width={50} height={50} color="#FFD700"/>
         </div>
         {/* Middle div, for what habit this current one will follow (if user opted in), the current habit name, and a motivational message based on the user's streak with the current habit */}
         <div className='flex flex-col items-start'>
@@ -34,13 +33,7 @@ const HabitCard = () => {
         <div className='flex flex-col items-center pr-4'>
             <div className='flex flex-row'>
                 {/* To Do: Adjust Streak logo to change based on the user's streak (fire if positive, ban if habit previously skipped) */}
-                <Image 
-                    src={fire}
-                    alt='Streak Logo - Fire'
-                    width={25}
-                    height={25}
-                    className={`stroke-red-500`}
-                />
+                <FireIcon width={25} height={25} color="#800E00" />
                 {/* To Do: dynamically adjust based on user's current streak with the current habit */}
                 <p className='text-[25px] text-[#800E00]'>3</p>
             </div>

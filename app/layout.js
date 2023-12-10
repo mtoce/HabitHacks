@@ -1,5 +1,5 @@
 import { Inter, Roboto_Mono } from 'next/font/google'
-import { Dashboard, Feed, Footer, Habits, Nav, Profile, Provider } from '../components';
+import { Nav, Provider } from '../components';
 import '/styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,9 +17,14 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="author" content="Michael Toce" />
+        <meta name="description" content="My First Full-Stack Web Application created with Next JS, React & TailwindCSS. Habit Hacks is a habit tracking tool for users." />
+      </head>
       <body className={roboto.className}>
         <Provider>
-          <main className=''>
+          <main className='flex flex-row w-screen h-screen'>
             <Nav />
             {children}
           </main>

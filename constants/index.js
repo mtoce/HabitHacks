@@ -1,3 +1,76 @@
+export const areaLinks = [
+	{
+		id: "next",
+		title: "Next to work on",
+	},
+	{
+		id: "logbook",
+		title: "Logbook",
+	},
+	{
+		id: "home",
+		title: "Home",
+	},
+	{
+		id: "work",
+		title: "Work",
+	},
+	{
+		id: "education",
+		title: "Education",
+	},
+	{
+		id: "shopping",
+		title: "Shopping",
+	},
+	{
+		id: "entertainment",
+		title: "Entertainment",
+	},
+	{
+		id: "fitness",
+		title: "Fitness",
+	},
+]
+
+export const tagLinks = [
+	{
+		id: "website",
+		title: "Build new website",
+		due_date: 4
+	},
+	{
+		id: "prepare",
+		title: "Prepare team offsite",
+		due_date: 62
+	},
+	{
+		id: "interviews",
+		title: "Be a better interviewer",
+		due_date: null
+	},
+	{
+		id: "promoted",
+		title: "Get promoted",
+		due_date: null
+	},
+]
+
+export const priorityLinks = [
+	{
+		id: "must",
+		title: "Must",
+	},
+	{
+		id: "should",
+		title: "Should",
+	},
+	{
+		id: "want",
+		title: "Want",
+	},
+]
+
 export const navLinks = [
     {
         id: "dashboard",
