@@ -5,6 +5,49 @@ import AreaLineItem from './AreaLineItem';
 import TagLineItem from './TagLineItem';
 
 const ToDoSection = ({ areas, tags }) => {
+    initItems = [
+        {
+            "id": 1,
+            "checked": false,
+            "item": "Define the website's purpose and goals",
+            "tag": "website",
+            "area": "work",
+            "due": null,
+            "priority": "highest",
+            "status": "started",
+        },
+        {
+            "id": 2,
+            "checked": false,
+            "item": "Set a budget and timeline for the project",
+            "tag": "website",
+            "area": "work",
+            "due": null,
+            "priority": "highest",
+            "status": "next",
+        },
+        {
+            "id": 3,
+            "checked": false,
+            "item": "Perform security checks and implement necessary measures",
+            "tag": "website",
+            "area": "work",
+            "due": null,
+            "priority": "low",
+            "status": "next",
+        },
+    ]
+    // useEffect(() => {
+    //   try {
+    //     const response = await fetch(URL)
+    //   }
+    //   catch (err) {
+        
+    //   } finally {
+
+    //   }
+    // }, [])
+    
   return (
     <section className='flex flex-row w-full'>
         <div className='flex flex-col bg-gray-800 h-screen'>
@@ -47,7 +90,7 @@ const ToDoSection = ({ areas, tags }) => {
                 />
             </div>
             <div className='flex flex-col pt-12 gap-2'>
-                <h1 className='pl-8 text-gray-400 text-[12px]'>GOALS IN "HOME"</h1>
+                <h1 className='pl-8 text-gray-400 text-[12px]'>GOALS IN "WORK"</h1>
                 <TagLineItem tag={tags[0]}/>
                 <TagLineItem tag={tags[1]}/>
                 <TagLineItem tag={tags[2]}/>
@@ -56,6 +99,15 @@ const ToDoSection = ({ areas, tags }) => {
         </div>
         <div className='flex flex-col bg-gray-900'>
             <h1>Checklist here</h1>
+            <div className='started '>
+                
+            </div>
+            {/* <div className='next'>
+
+            </div>
+            <div className='later'>
+
+            </div> */}
         </div>
     </section>
   )
