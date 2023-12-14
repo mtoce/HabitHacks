@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import { ToDoSection, HabitCard } from '../components';
-import { areaLinks, tagLinks } from '@/constants';
+import { areaLinks, goalLinks } from '@/constants';
 
 const Home = () => {
   return (
     <section className='app'>
       {/* <HabitCard /> */}
-      <ToDoSection areas={areaLinks} tags={tagLinks} />
+      <ToDoSection areas={areaLinks} goals={goalLinks} />
     </section>
   )
 }

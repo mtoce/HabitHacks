@@ -1,10 +1,10 @@
 import React from 'react'
 
-const AreaLineItem = ({ area, areaIcon }) => {
+const AreaLineItem = ({ area }) => {
   return (
     <div className='flex flex-row justify-start items-center space-x-4 pl-8 pr-8'>
-        {areaIcon}
-        <p>{area.title}</p>
+        {/* <p>{area.title}</p> */}
+        <p>Area Title</p>
     </div>
   )
 }

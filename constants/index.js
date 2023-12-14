@@ -33,7 +33,7 @@ export const areaLinks = [
 	},
 ]
 
-export const tagLinks = [
+export const goalLinks = [
 	{
 		id: "website",
 		title: "Build new website",
@@ -70,6 +70,109 @@ export const priorityLinks = [
 		title: "Want",
 	},
 ]
+
+export const initTasks = [
+    {
+      "id": 1,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "now",
+      "previous_status": "later",
+	  "checked": false,
+      "estimate": 10,
+      "priority": 0,
+    },
+    {
+      "id": 2,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "later",
+      "previous_status": null,
+	  "checked": false,
+      "estimate": 120,
+      "priority": 0,
+    },
+    {
+      "id": 3,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "later",
+      "previous_status": null,
+	  "checked": false,
+      "estimate": 120,
+      "priority": 0,
+    },
+    {
+      "id": 4,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "later",
+      "previous_status": null,
+	  "checked": false,
+      "estimate": 120,
+      "priority": 0,
+    },
+    {
+      "id": 5,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "later",
+      "previous_status": null,
+	  "checked": false,
+      "estimate": 120,
+      "priority": 0,
+    },
+    {
+      "id": 6,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "later",
+      "previous_status": null,
+	  "checked": false,
+      "estimate": 120,
+      "priority": 0,
+    },
+    {
+      "id": 7,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "later",
+      "previous_status": null,
+	  "checked": false,
+      "estimate": 120,
+      "priority": 0,
+    },
+    {
+      "id": 8,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "later",
+      "previous_status": null,
+	  "checked": false,
+      "estimate": 120,
+      "priority": 0,
+    },
+    {
+      "id": 9,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "later",
+      "previous_status": null,
+	  "checked": false,
+      "estimate": 120,
+      "priority": 0,
+    },
+    {
+      "id": 10,
+      "area_id": "Software Dev",
+      "goal_id": null,
+      "status": "later",
+      "previous_status": null,
+	  "checked": false,
+      "estimate": 120,
+      "priority": 0,
+    },
+  ]
 
 export const navLinks = [
     {
