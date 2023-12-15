@@ -1,3 +1,166 @@
+export const initTasks = [
+	{
+	  "id": 1,
+	  "area_id": 2,
+	  "goal_id": 5,
+	  "status": "now",
+	  "previous_status": "later",
+	  "checked": false,
+	  "estimate": 30,
+	  "priority": 2,
+	  "title": "Setup & structure initial mock data to use for frontend development of application"
+	},
+	{
+	  "id": 2,
+	  "area_id": 2,
+	  "goal_id": 5,
+	  "status": "now",
+	  "previous_status": "later",
+	  "checked": false,
+	  "estimate": 20,
+	  "priority": 2,
+	  "title": "Load the data from json server"
+	},
+	{
+	  "id": 3,
+	  "area_id": 2,
+	  "goal_id": 5,
+	  "status": "now",
+	  "previous_status": "later",
+	  "checked": false,
+	  "estimate": 30,
+	  "priority": 1,
+	  "title": "Create styling of each taskLineItem to be displayed once added to the taskList"
+	},
+	{
+	  "id": 4,
+	  "area_id": 2,
+	  "goal_id": 5,
+	  "status": "now",
+	  "previous_status": "later",
+	  "checked": false,
+	  "estimate": null,
+	  "priority": 1,
+	  "title": "Add + button to areas and goals for onClick event to add the respected element"
+	},
+	{
+	  "id": 5,
+	  "area_id": 2,
+	  "goal_id": 5,
+	  "status": "later",
+	  "previous_status": null,
+	  "checked": false,
+	  "estimate": 45,
+	  "priority": 0,
+	  "title": "Create Area Form to add a new area of life"
+	},
+	{
+	  "id": 6,
+	  "area_id": 2,
+	  "goal_id": 4,
+	  "status": "later",
+	  "previous_status": null,
+	  "checked": false,
+	  "estimate": 45,
+	  "priority": 0,
+	  "title": "Research different coding portfolios for inspiration - Note aspects I like and dislike for my own style"
+	},
+	{
+	  "id": 7,
+	  "area_id": 2,
+	  "goal_id": 4,
+	  "status": "later",
+	  "previous_status": null,
+	  "checked": false,
+	  "estimate": 120,
+	  "priority": 0,
+	  "title": "Wireframe the portfolio from my research ideas"
+	},
+	{
+	  "id": 8,
+	  "area_id": 2,
+	  "goal_id": 4,
+	  "status": "later",
+	  "previous_status": null,
+	  "checked": false,
+	  "estimate": 30,
+	  "priority": 0,
+	  "title": "Choose color scheme for portfolio"
+	},
+	{
+	  "id": 9,
+	  "area_id": 2,
+	  "goal_id": 4,
+	  "status": "later",
+	  "previous_status": null,
+	  "checked": false,
+	  "estimate": 30,
+	  "priority": 0,
+	  "title": "Choose font theme for portfolio"
+	},
+	{
+	  "id": 10,
+	  "area_id": 2,
+	  "goal_id": 5,
+	  "status": "later",
+	  "previous_status": null,
+	  "checked": false,
+	  "estimate": 20,
+	  "priority": 0,
+	  "title": "Research the proper steps to building a FullStack Application"
+	}
+]
+
+export const initAreas = [
+	{
+		"area_id": 1,
+		"title": "Personal Tasks"
+	},
+	{
+		"area_id": 2,
+		"title": "Software Dev"
+	}
+  ]
+
+export const initGoals = [
+	{
+		"goal_id": 0,
+		"area_id": 1,
+		"due": "92 Days",
+		"title": "75 hard!"
+	},
+	{
+		"goal_id": 1,
+		"area_id": 1,
+		"due": "383 Days",
+		"title": "Recipe Book"
+	},
+	{
+		"goal_id": 2,
+		"area_id": 1,
+		"due": null,
+		"title": "Chores"
+	},
+	{
+		"goal_id": 3,
+		"area_id": 1,
+		"due": null,
+		"title": "Be more social"
+	},
+	{
+		"goal_id": 4,
+		"area_id": 2,
+		"due": "32 Days",
+		"title": "Build Portfolio Website"
+	},
+	{
+		"goal_id": 5,
+		"area_id": 2,
+		"due": "48 Days",
+		"title": "Habit Hacks App"
+	}
+  ]
+
 export const areaLinks = [
 	{
 		id: "next",
@@ -70,109 +233,6 @@ export const priorityLinks = [
 		title: "Want",
 	},
 ]
-
-export const initTasks = [
-    {
-      "id": 1,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "now",
-      "previous_status": "later",
-	  "checked": false,
-      "estimate": 10,
-      "priority": 0,
-    },
-    {
-      "id": 2,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "later",
-      "previous_status": null,
-	  "checked": false,
-      "estimate": 120,
-      "priority": 0,
-    },
-    {
-      "id": 3,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "later",
-      "previous_status": null,
-	  "checked": false,
-      "estimate": 120,
-      "priority": 0,
-    },
-    {
-      "id": 4,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "later",
-      "previous_status": null,
-	  "checked": false,
-      "estimate": 120,
-      "priority": 0,
-    },
-    {
-      "id": 5,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "later",
-      "previous_status": null,
-	  "checked": false,
-      "estimate": 120,
-      "priority": 0,
-    },
-    {
-      "id": 6,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "later",
-      "previous_status": null,
-	  "checked": false,
-      "estimate": 120,
-      "priority": 0,
-    },
-    {
-      "id": 7,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "later",
-      "previous_status": null,
-	  "checked": false,
-      "estimate": 120,
-      "priority": 0,
-    },
-    {
-      "id": 8,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "later",
-      "previous_status": null,
-	  "checked": false,
-      "estimate": 120,
-      "priority": 0,
-    },
-    {
-      "id": 9,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "later",
-      "previous_status": null,
-	  "checked": false,
-      "estimate": 120,
-      "priority": 0,
-    },
-    {
-      "id": 10,
-      "area_id": "Software Dev",
-      "goal_id": null,
-      "status": "later",
-      "previous_status": null,
-	  "checked": false,
-      "estimate": 120,
-      "priority": 0,
-    },
-  ]
 
 export const navLinks = [
     {

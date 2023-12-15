@@ -4,9 +4,6 @@ import GoogleProvider from 'next-auth/providers/google'
 // import FacebookProvider from 'next-auth/providers/facebook'
 // import EmailProvider from 'next-auth/providers/email'
 
-import User from '@/lib/mongo/user'
-import clientPromise from '@/lib/mongo'
-
 const handler = NextAuth({
   providers: [
     // OAuth authentication providers...

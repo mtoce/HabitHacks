@@ -10,15 +10,15 @@ const Nav = () => {
   return (
     <nav className='flex flex-col items-center justify-between bg-gray-700 w-20 pt-10 pb-10 h-screen'>
         <div className='flex flex-col space-y-8 align-items'>
-            <FaList size={25} />
-            <FaChartSimple size={25} />
-            <FaNoteSticky size={25} />
-            <FaBookOpen size={25} />
-            <FaMagnifyingGlass size={25} />
+            <FaList size={25} fill="white"/>
+            <FaChartSimple size={25} fill="white"/>
+            <FaNoteSticky size={25} fill="white"/>
+            <FaBookOpen size={25} fill="white"/>
+            <FaMagnifyingGlass size={25} fill="white" />
         </div>
         <div className='flex flex-col items-center space-y-8 align-items'>
             {/* TODO: display user's current weather, instead of default "sun" */}
-            <FaSun size={25} />
+            <FaSun size={25} fill="white"/>
             {/* <FaCloud size={25} />
             <FaCloudBolt size={25} />
             <FaCloudMoon size={25} />
@@ -28,7 +28,7 @@ const Nav = () => {
             <FaCloudSunRain size={25} />
             <FaSnowflake size={25} /> */}
             {/* TODO: display user's current mood, instead of default */}
-            <FaSmileWink size={25} />
+            <FaSmileWink size={25} fill="white"/>
             {/* <FaAngry size={25} />
             <FaDizzy size={25} />
             <FaGrimace size={25} />
@@ -48,8 +48,8 @@ const Nav = () => {
             <FaSadTear size={25} />
             <FaSmile size={25} />
             <FaSmileBeam size={25} /> */}
-            <FaCog size={25} />
-            <FaCirclePlus size={35} />
+            <FaCog size={25} fill="white"/>
+            <FaCirclePlus size={35} fill="white"/>
         </div>
     </nav>
   )

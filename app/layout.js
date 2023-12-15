@@ -24,7 +24,7 @@ const RootLayout = ({ children }) => {
       </head>
       <body className={roboto.className}>
         <Provider>
-          <main className='flex flex-row w-screen h-screen'>
+          <main className='flex flex-row w-full'>
             <Nav />
             {children}
           </main>
