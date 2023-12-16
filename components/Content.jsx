@@ -8,9 +8,13 @@ const Content = () => {
     const [tasks, setTasks] = useState(initTasks)
     const [goals, setGoals] = useState(initGoals)
     const [areas, setAreas] = useState(initAreas)
+
     const [newTask, setNewTask] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const [fetchError, setFetchError] = useState(null)
+
+    const [areaSelectedId, setAreaSelectedId] = useState(null)
+
     const TASKS_API_URL = 'http://localhost:3500/tasks'
     const GOALS_API_URL = 'http://localhost:3500/goals'
     const AREAS_API_URL = 'http://localhost:3500/areas'
@@ -69,6 +73,18 @@ const Content = () => {
     //     if (result) setFetchError(result)
     //   }
 
+    const handleAreaClick = (area) => {
+        if (area["selected"] === false) {
+            // set previously selected area's selected value to false if not null
+            const obj = areas.find((area) => area["area_id"] === areaSelectedId)
+            if (obj) {
+                obj["selected"] = false
+            }
+            area["selected"] = true
+            setAreaSelectedId(area["area_id"])
+        }
+    }
+    console.log(areas, `area selected id: ${areaSelectedId}`)
   return (
     <section className='flex flex-row w-full h-full'>
         <div className='flex flex-col bg-gray-800'>
@@ -87,11 +103,17 @@ const Content = () => {
                 <div>
                     <ul className='flex flex-col gap-2'>
                         {areas.map((area) => (
-                            <li className='flex flex-col bg-gray750 rounded-lg pl-4 pr-4 ml-3 mr-3 pt-2 pb-2'>
+                            <li 
+                                key={area.area_id} 
+                                className={`flex flex-col rounded-lg pl-4 pr-4 ml-3 mr-3 pt-2 pb-2 
+                                {${area.area_id} === ${areaSelectedId} ? bg-red-800 : bg-gray750}`}
+                                onClick={() => handleAreaClick(area)}
+                                >
                                 <label className='absolute -top-full -left-full'>
                                     {area.title}
                                 </label>
                                 <p className='text-white text-[12px]'>{area.title}</p>
+                                {console.log(area.area_id)}
                             </li>
                         ))}
                     </ul>
@@ -105,11 +127,12 @@ const Content = () => {
                     <ul className='flex flex-col gap-2'>
                         {/* Change to filter based on currently selected Area */}
                         {goals.map((goal) => (
-                            <li className=' text-[14px] flex flex-col gap-1 bg-gray750 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2'>
+                            <li key={goal.goal_id} className=' text-[14px] flex flex-col gap-1 bg-gray750 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2'>
                                 <label className='absolute -left-full -top-full'>
                                     {goal.title}
                                 </label>
                                 <p className='text-white text-[12px]'>{goal.title}</p>
+                                {console.log(goal.goal_id)}
                                 <div className='bg-gray-700 rounded-xl h-[6px] mr-10'>
                                 </div>
                                 {goals[0].due && goals[0].due < 100 && 
@@ -128,7 +151,7 @@ const Content = () => {
             <div className='flex'>
                 <ul className='flex flex-col gap-4 m-14'>
                     {tasks.map((task) => (
-                        <li className='flex justify-start items-center gap-2'>
+                        <li key={task.id} className='flex justify-start items-center gap-2'>
                             <input type="checkbox" />
                             <label className='absolute -left-full -top-full'>
                                 {task.title}

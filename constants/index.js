@@ -114,50 +114,58 @@ export const initTasks = [
 export const initAreas = [
 	{
 		"area_id": 1,
-		"title": "Personal Tasks"
+		"title": "Personal Tasks",
+		"selected": false,
 	},
 	{
 		"area_id": 2,
-		"title": "Software Dev"
+		"title": "Software Dev",
+		"selected": false,
 	}
   ]
 
 export const initGoals = [
 	{
-		"goal_id": 0,
-		"area_id": 1,
-		"due": "92 Days",
-		"title": "75 hard!"
-	},
-	{
 		"goal_id": 1,
 		"area_id": 1,
-		"due": "383 Days",
-		"title": "Recipe Book"
+		"due": "92 Days",
+		"title": "75 hard!",
+		"selected": false,
 	},
 	{
 		"goal_id": 2,
 		"area_id": 1,
-		"due": null,
-		"title": "Chores"
+		"due": "383 Days",
+		"title": "Recipe Book",
+		"selected": false,
 	},
 	{
 		"goal_id": 3,
 		"area_id": 1,
 		"due": null,
-		"title": "Be more social"
+		"title": "Chores",
+		"selected": false,
 	},
 	{
 		"goal_id": 4,
-		"area_id": 2,
-		"due": "32 Days",
-		"title": "Build Portfolio Website"
+		"area_id": 1,
+		"due": null,
+		"title": "Be more social",
+		"selected": false,
 	},
 	{
 		"goal_id": 5,
 		"area_id": 2,
+		"due": "32 Days",
+		"title": "Build Portfolio Website",
+		"selected": false,
+	},
+	{
+		"goal_id": 6,
+		"area_id": 2,
 		"due": "48 Days",
-		"title": "Habit Hacks App"
+		"title": "Habit Hacks App",
+		"selected": false,
 	}
   ]
 
