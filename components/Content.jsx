@@ -14,6 +14,7 @@ const Content = () => {
     const [fetchError, setFetchError] = useState(null)
 
     const [areaSelectedId, setAreaSelectedId] = useState(null)
+    const [goalSelectedId, setGoalSelectedId] = useState(null)
 
     const TASKS_API_URL = 'http://localhost:3500/tasks'
     const GOALS_API_URL = 'http://localhost:3500/goals'
@@ -73,19 +74,52 @@ const Content = () => {
     //     if (result) setFetchError(result)
     //   }
 
-    const handleAreaClick = (area) => {
+    // Whenever the Area changes, set the goalSelectedId to null
+    
+    useEffect(() => {
+        setGoalSelectedId(null)
+    }, [areaSelectedId])
+
+    const handleAreaClick = (area, goal) => {
         if (area["selected"] === false) {
             // set previously selected area's selected value to false if not null
-            const obj = areas.find((area) => area["area_id"] === areaSelectedId)
-            if (obj) {
-                obj["selected"] = false
+            const prevSelArea = areas.find((area) => area["area_id"] === areaSelectedId)
+            if (prevSelArea) {
+                prevSelArea["selected"] = false
+            }
+            // find the previously selected goal and unselect it if it exists.
+            if (goalSelectedId) {
+                
             }
             area["selected"] = true
             setAreaSelectedId(area["area_id"])
         }
     }
+
+    const handleGoalClick = (goal, area) => {
+        if (goal["selected"] === false) {
+            const prevSelGoal = goals.find((goal) => goal["goal_id"] === goalSelectedId)
+            if (prevSelGoal) {
+                prevSelGoal["selected"] = false
+            }
+            goal["selected"] = true
+            // Need to fix and actually update the areas not just the variable I created here...
+            const areaWithSelGoal = areas.find((area) => area["area_id"] === goal["area_id"])
+            if (areaWithSelGoal) {
+                areaWithSelGoal["selected"] = true
+            }
+            setGoalSelectedId(goal["goal_id"])
+            setAreaSelectedId(goal["area_id"])
+        }  else {
+            goal["selected"] = false
+            setGoalSelectedId(null)
+        }
+    }
+    console.log(`Area Selected Id: ${areaSelectedId}`)
+    console.log(`Goal Selected Id: ${goalSelectedId}`)
+
   return (
-    <section className='flex flex-row w-full h-full'>
+    <section className='flex flex-row flex-grow w-full h-full'>
         <div className='flex flex-col bg-gray-800'>
             <div className='w-full flex flex-col pt-10 pb-6 gap-6'>
                 <div className='flex justify-start items-center gap-2 ml-8'>
@@ -126,7 +160,11 @@ const Content = () => {
                     <ul className='flex flex-col gap-2'>
                         {/* Change to filter based on currently selected Area */}
                         {areaSelectedId ? goals.filter((goal) => goal.area_id === areaSelectedId).map((goal) => (
-                            <li key={goal.goal_id} className=' text-[14px] flex flex-col gap-1 bg-gray750 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2'>
+                            <li 
+                            key={goal.goal_id} 
+                            className={`text-[14px] flex flex-col gap-1 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2 ${goal.goal_id === goalSelectedId ? 'bg-gray-900' : 'bg-gray750'}`}
+                            onClick={() => handleGoalClick(goal)}
+                            >
                                 <label className='absolute -left-full -top-full'>
                                     {goal.title}
                                 </label>
@@ -142,7 +180,11 @@ const Content = () => {
                             </li>
                             // Otherwise, just map all the goals if no area is selected
                         )) : goals.map((goal) => (
-                            <li key={goal.goal_id} className=' text-[14px] flex flex-col gap-1 bg-gray750 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2'>
+                            <li 
+                            key={goal.goal_id} 
+                            className={`text-[14px] flex flex-col gap-1 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2 ${goal.goal_id === goalSelectedId ? 'bg-gray-900' : 'bg-gray750'}`}
+                            onClick={() => handleGoalClick(goal)}
+                            >
                                 <label className='absolute -left-full -top-full'>
                                     {goal.title}
                                 </label>
@@ -162,10 +204,54 @@ const Content = () => {
                 </div>
             </div>
         </div>
-        <div className='flex flex-col bg-gray-900'>
-            <div className='flex'>
+        <div className='flex flex-col flex-grow bg-gray-900'>
+            <div className='flex flex-grow'>
                 <ul className='flex flex-col gap-4 m-14'>
-                    {tasks.map((task) => (
+                    {areaSelectedId && goalSelectedId && tasks.filter((task) => task.goal_id === goalSelectedId).map((task) => (
+                        <li key={task.id} className='flex justify-start items-center gap-2'>
+                            <input type="checkbox" />
+                            <label className='absolute -left-full -top-full'>
+                                {task.title}
+                            </label>
+                            <p className='text-white text-[10px]'>{task.title}</p>
+                            {task.area_id && 
+                                <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
+                                    {areas.filter((area) => area.area_id === task.area_id).title}
+                                </button>
+                            }
+                            {task.estimate && 
+                                <button
+                                    type="button"
+                                    className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[8px]'
+                                    >
+                                    {task.estimate < 60 ? `${task.estimate} minutes` : `${task.estimate / 60} hours`}
+                                </button>
+                            }
+                        </li>
+                    ))}
+                    {areaSelectedId && goalSelectedId === null && tasks.filter((task) => task.area_id === areaSelectedId).map((task) => (
+                        <li key={task.id} className='flex justify-start items-center gap-2'>
+                            <input type="checkbox" />
+                            <label className='absolute -left-full -top-full'>
+                                {task.title}
+                            </label>
+                            <p className='text-white text-[10px]'>{task.title}</p>
+                            {task.area_id && 
+                                <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
+                                    {areas.filter((area) => area.area_id === task.area_id).title}
+                                </button>
+                            }
+                            {task.estimate && 
+                                <button
+                                    type="button"
+                                    className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[8px]'
+                                    >
+                                    {task.estimate < 60 ? `${task.estimate} minutes` : `${task.estimate / 60} hours`}
+                                </button>
+                            }
+                        </li>
+                    ))}
+                    {areaSelectedId === null && goalSelectedId === null && tasks.map((task) => (
                         <li key={task.id} className='flex justify-start items-center gap-2'>
                             <input type="checkbox" />
                             <label className='absolute -left-full -top-full'>

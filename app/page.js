@@ -4,7 +4,7 @@ import { areaLinks, goalLinks } from '@/constants';
 
 const Home = () => {
   return (
-    <section className='app w-full'>
+    <section className='flex w-full'>
       <Content />
     </section>
   )

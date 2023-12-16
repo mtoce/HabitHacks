@@ -2,7 +2,7 @@ export const initTasks = [
 	{
 	  "id": 1,
 	  "area_id": 2,
-	  "goal_id": 5,
+	  "goal_id": 6,
 	  "status": "now",
 	  "previous_status": "later",
 	  "checked": false,
@@ -13,7 +13,7 @@ export const initTasks = [
 	{
 	  "id": 2,
 	  "area_id": 2,
-	  "goal_id": 5,
+	  "goal_id": 6,
 	  "status": "now",
 	  "previous_status": "later",
 	  "checked": false,
@@ -24,7 +24,7 @@ export const initTasks = [
 	{
 	  "id": 3,
 	  "area_id": 2,
-	  "goal_id": 5,
+	  "goal_id": 6,
 	  "status": "now",
 	  "previous_status": "later",
 	  "checked": false,
@@ -35,7 +35,7 @@ export const initTasks = [
 	{
 	  "id": 4,
 	  "area_id": 2,
-	  "goal_id": 5,
+	  "goal_id": 6,
 	  "status": "now",
 	  "previous_status": "later",
 	  "checked": false,
@@ -46,7 +46,7 @@ export const initTasks = [
 	{
 	  "id": 5,
 	  "area_id": 2,
-	  "goal_id": 5,
+	  "goal_id": 6,
 	  "status": "later",
 	  "previous_status": null,
 	  "checked": false,
@@ -57,7 +57,7 @@ export const initTasks = [
 	{
 	  "id": 6,
 	  "area_id": 2,
-	  "goal_id": 4,
+	  "goal_id": 5,
 	  "status": "later",
 	  "previous_status": null,
 	  "checked": false,
@@ -68,7 +68,7 @@ export const initTasks = [
 	{
 	  "id": 7,
 	  "area_id": 2,
-	  "goal_id": 4,
+	  "goal_id": 5,
 	  "status": "later",
 	  "previous_status": null,
 	  "checked": false,
@@ -79,7 +79,7 @@ export const initTasks = [
 	{
 	  "id": 8,
 	  "area_id": 2,
-	  "goal_id": 4,
+	  "goal_id": 5,
 	  "status": "later",
 	  "previous_status": null,
 	  "checked": false,
@@ -90,7 +90,7 @@ export const initTasks = [
 	{
 	  "id": 9,
 	  "area_id": 2,
-	  "goal_id": 4,
+	  "goal_id": 5,
 	  "status": "later",
 	  "previous_status": null,
 	  "checked": false,
@@ -101,7 +101,7 @@ export const initTasks = [
 	{
 	  "id": 10,
 	  "area_id": 2,
-	  "goal_id": 5,
+	  "goal_id": 6,
 	  "status": "later",
 	  "previous_status": null,
 	  "checked": false,
