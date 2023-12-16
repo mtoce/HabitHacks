@@ -84,7 +84,6 @@ const Content = () => {
             setAreaSelectedId(area["area_id"])
         }
     }
-    console.log(areas, `area selected id: ${areaSelectedId}`)
   return (
     <section className='flex flex-row w-full h-full'>
         <div className='flex flex-col bg-gray-800'>
@@ -105,8 +104,8 @@ const Content = () => {
                         {areas.map((area) => (
                             <li 
                                 key={area.area_id} 
-                                className={`flex flex-col rounded-lg pl-4 pr-4 ml-3 mr-3 pt-2 pb-2 
-                                {${area.area_id} === ${areaSelectedId} ? bg-red-800 : bg-gray750}`}
+                                className={`flex flex-col rounded-lg pl-4 pr-4 ml-3 mr-3 pt-2 pb-2
+                                ${area.area_id === areaSelectedId ? 'bg-gray-900': 'bg-gray750'}`}
                                 onClick={() => handleAreaClick(area)}
                                 >
                                 <label className='absolute -top-full -left-full'>
@@ -126,7 +125,23 @@ const Content = () => {
                 <div>
                     <ul className='flex flex-col gap-2'>
                         {/* Change to filter based on currently selected Area */}
-                        {goals.map((goal) => (
+                        {areaSelectedId ? goals.filter((goal) => goal.area_id === areaSelectedId).map((goal) => (
+                            <li key={goal.goal_id} className=' text-[14px] flex flex-col gap-1 bg-gray750 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2'>
+                                <label className='absolute -left-full -top-full'>
+                                    {goal.title}
+                                </label>
+                                <p className='text-white text-[12px]'>{goal.title}</p>
+                                {console.log(goal.goal_id)}
+                                <div className='bg-gray-700 rounded-xl h-[6px] mr-10'>
+                                </div>
+                                {goals[0].due && goals[0].due < 100 && 
+                                    <div>
+                                        <p style={ {'font-size' : '12px'} }>DUE IN {goals[0].due} DAYS</p>
+                                    </div>
+                                }
+                            </li>
+                            // Otherwise, just map all the goals if no area is selected
+                        )) : goals.map((goal) => (
                             <li key={goal.goal_id} className=' text-[14px] flex flex-col gap-1 bg-gray750 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2'>
                                 <label className='absolute -left-full -top-full'>
                                     {goal.title}
