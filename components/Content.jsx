@@ -75,12 +75,8 @@ const Content = () => {
     //   }
 
     // Whenever the Area changes, set the goalSelectedId to null
-    
-    useEffect(() => {
-        setGoalSelectedId(null)
-    }, [areaSelectedId])
 
-    const handleAreaClick = (area, goal) => {
+    const handleAreaClick = (area, goals) => {
         if (area["selected"] === false) {
             // set previously selected area's selected value to false if not null
             const prevSelArea = areas.find((area) => area["area_id"] === areaSelectedId)
@@ -88,17 +84,20 @@ const Content = () => {
                 prevSelArea["selected"] = false
             }
             // find the previously selected goal and unselect it if it exists.
-            if (goalSelectedId) {
-                
+            const prevSelGoal = goals.find((goal) => goal["goal_id"] === goalSelectedId)
+            if (prevSelGoal) {
+                prevSelGoal["selected"] = false
             }
             area["selected"] = true
             setAreaSelectedId(area["area_id"])
+            setGoalSelectedId(null)
         }
     }
 
-    const handleGoalClick = (goal, area) => {
+    const handleGoalClick = (goal, areas) => {
         if (goal["selected"] === false) {
             const prevSelGoal = goals.find((goal) => goal["goal_id"] === goalSelectedId)
+            console.log(prevSelGoal)
             if (prevSelGoal) {
                 prevSelGoal["selected"] = false
             }
@@ -117,6 +116,9 @@ const Content = () => {
     }
     console.log(`Area Selected Id: ${areaSelectedId}`)
     console.log(`Goal Selected Id: ${goalSelectedId}`)
+    console.log(areas, goals)
+
+
 
   return (
     <section className='flex flex-row flex-grow w-full h-full'>
@@ -140,7 +142,7 @@ const Content = () => {
                                 key={area.area_id} 
                                 className={`flex flex-col rounded-lg pl-4 pr-4 ml-3 mr-3 pt-2 pb-2
                                 ${area.area_id === areaSelectedId ? 'bg-gray-900': 'bg-gray750'}`}
-                                onClick={() => handleAreaClick(area)}
+                                onClick={() => handleAreaClick(area, goals)}
                                 >
                                 <label className='absolute -top-full -left-full'>
                                     {area.title}
@@ -163,7 +165,7 @@ const Content = () => {
                             <li 
                             key={goal.goal_id} 
                             className={`text-[14px] flex flex-col gap-1 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2 ${goal.goal_id === goalSelectedId ? 'bg-gray-900' : 'bg-gray750'}`}
-                            onClick={() => handleGoalClick(goal)}
+                            onClick={() => handleGoalClick(goal, areas)}
                             >
                                 <label className='absolute -left-full -top-full'>
                                     {goal.title}
@@ -183,7 +185,7 @@ const Content = () => {
                             <li 
                             key={goal.goal_id} 
                             className={`text-[14px] flex flex-col gap-1 rounded-lg pl-4 ml-3 mr-3 pt-2 pb-2 ${goal.goal_id === goalSelectedId ? 'bg-gray-900' : 'bg-gray750'}`}
-                            onClick={() => handleGoalClick(goal)}
+                            onClick={() => handleGoalClick(goal, areas)}
                             >
                                 <label className='absolute -left-full -top-full'>
                                     {goal.title}
