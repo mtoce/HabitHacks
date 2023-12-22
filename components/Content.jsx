@@ -5,9 +5,13 @@ import { FaCircleArrowRight, FaCircleCheck, FaHouseChimney, FaBriefcase, FaGradu
 
 const Content = () => {
     
-    const [tasks, setTasks] = useState(initTasks)
-    const [goals, setGoals] = useState(initGoals)
-    const [areas, setAreas] = useState(initAreas)
+    // const [tasks, setTasks] = useState(initTasks)
+    // const [goals, setGoals] = useState(initGoals)
+    // const [areas, setAreas] = useState(initAreas)
+
+    const [tasks, setTasks] = useState([])
+    const [goals, setGoals] = useState([])
+    const [areas, setAreas] = useState([])
 
     const [newTask, setNewTask] = useState('')
     const [isLoading, setIsLoading] = useState(true)
@@ -20,23 +24,63 @@ const Content = () => {
     const GOALS_API_URL = 'http://localhost:3500/goals'
     const AREAS_API_URL = 'http://localhost:3500/areas'
 
-    // useEffect(() => {
-    //     const fetchTasks = async () => {
-    //         try {
-    //             const response = await fetch(TASK_API_URL)
-    //             if (!response.ok) throw Error('Did not receive expected data')
-    //             const listTasks = await response.json()
-    //             setTasks(listTasks)
-    //             setFetchError(null)
-    //         } catch (err) {
-    //             setFetchError(err.message)
-    //         } finally {
-    //             setIsLoading(false)
-    //         }
-    //     }
-    //     fetchTasks()
-    //   }, [])
-    
+    useEffect(() => {
+        const fetchTasks = async () => {
+            try {
+                console.log('Fetching tasks')
+                const tasksResponse = await fetch(TASKS_API_URL)
+                if (!tasksResponse.ok) throw Error('Did not receive expected tasks data')
+                const tasksData = await tasksResponse.json()
+                setFetchError(null)
+                return tasksData
+            } catch (err) {
+                setFetchError(err.message)
+            }
+        }
+        const fetchGoals = async () => {
+            try {
+                console.log('Fetching goals')
+                const goalsResponse = await fetch(GOALS_API_URL)
+                if (!goalsResponse.ok) throw Error('Did not receive expected goals data')
+                const goalsData = await goalsResponse.json()
+                setFetchError(null)
+                return goalsData
+            } catch (err) {
+                setFetchError(err.message)
+            }
+        }
+        const fetchAreas = async () => {
+            try {
+                console.log('Fetching areas')
+                const areasResponse = await fetch(AREAS_API_URL)
+                if (!areasResponse.ok) throw Error('Did not receive expected areas data')
+                const areasData = await areasResponse.json()
+                setFetchError(null)
+                return areasData
+            } catch (err) {
+                setFetchError(err.message)
+            }
+        }
+
+        const fetchAll = async () => {
+            console.log('Fetching all')
+            const tempLoadedTasks = await fetchTasks()
+            const tempLoadedGoals = await fetchGoals()
+            const tempLoadedAreas = await fetchAreas()
+            setTasks(tempLoadedTasks)
+            setGoals(tempLoadedGoals)
+            setAreas(tempLoadedAreas)
+        }
+        fetchAll()
+      }, [])
+
+    console.log("initTasks: ", initTasks)
+    console.log("initGoals: ", initGoals)
+    console.log("initAreas: ", initAreas)
+    console.log("tasks: ", tasks)
+    console.log("goals: ", goals)
+    console.log("areas: ", areas)
+
     //   const handleCheck = async (id) => {
     //     // Recreate the list of tasks from default state by checking if an task is checked by the user. Swap the checked status if it is checked and return the same task if it is not checked.
     //     const listTasks = tasks.map((task) => task.id === id ? { ...task, checked: !task.checked } : task)
@@ -114,11 +158,20 @@ const Content = () => {
             setGoalSelectedId(null)
         }
     }
-    console.log(`Area Selected Id: ${areaSelectedId}`)
-    console.log(`Goal Selected Id: ${goalSelectedId}`)
-    console.log(areas, goals)
 
-
+    // const handleAddTask = () => {
+    //     return (
+    //       <form>
+    //         <label for="addNewTask">Add New Task</label>
+    //         <textarea id="addNewTask">
+    //           <input type="checkbox" />
+    //           <input type="text" placeholder="New Task" autoFocus required/>
+    //           <input type="text" placeholder="Additional Notes..." />
+    //         </textarea>
+            
+    //       </form>
+    //   )
+    //   }
 
   return (
     <section className='flex flex-row flex-grow w-full h-full'>
@@ -207,75 +260,76 @@ const Content = () => {
             </div>
         </div>
         <div className='flex flex-col flex-grow bg-gray-900'>
-            <div className='flex flex-grow'>
-                <ul className='flex flex-col gap-4 m-14'>
-                    {areaSelectedId && goalSelectedId && tasks.filter((task) => task.goal_id === goalSelectedId).map((task) => (
-                        <li key={task.id} className='flex justify-start items-center gap-2'>
-                            <input type="checkbox" />
-                            <label className='absolute -left-full -top-full'>
-                                {task.title}
-                            </label>
-                            <p className='text-white text-[10px]'>{task.title}</p>
-                            {task.area_id && 
-                                <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
-                                    {areas.filter((area) => area.area_id === task.area_id).title}
-                                </button>
-                            }
-                            {task.estimate && 
-                                <button
-                                    type="button"
-                                    className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[8px]'
-                                    >
-                                    {task.estimate < 60 ? `${task.estimate} minutes` : `${task.estimate / 60} hours`}
-                                </button>
-                            }
-                        </li>
-                    ))}
-                    {areaSelectedId && goalSelectedId === null && tasks.filter((task) => task.area_id === areaSelectedId).map((task) => (
-                        <li key={task.id} className='flex justify-start items-center gap-2'>
-                            <input type="checkbox" />
-                            <label className='absolute -left-full -top-full'>
-                                {task.title}
-                            </label>
-                            <p className='text-white text-[10px]'>{task.title}</p>
-                            {task.area_id && 
-                                <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
-                                    {areas.filter((area) => area.area_id === task.area_id).title}
-                                </button>
-                            }
-                            {task.estimate && 
-                                <button
-                                    type="button"
-                                    className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[8px]'
-                                    >
-                                    {task.estimate < 60 ? `${task.estimate} minutes` : `${task.estimate / 60} hours`}
-                                </button>
-                            }
-                        </li>
-                    ))}
-                    {areaSelectedId === null && goalSelectedId === null && tasks.map((task) => (
-                        <li key={task.id} className='flex justify-start items-center gap-2'>
-                            <input type="checkbox" />
-                            <label className='absolute -left-full -top-full'>
-                                {task.title}
-                            </label>
-                            <p className='text-white text-[10px]'>{task.title}</p>
-                            {task.area_id && 
-                                <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
-                                    {areas.filter((area) => area.area_id === task.area_id).title}
-                                </button>
-                            }
-                            {task.estimate && 
-                                <button
-                                    type="button"
-                                    className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[8px]'
-                                    >
-                                    {task.estimate < 60 ? `${task.estimate} minutes` : `${task.estimate / 60} hours`}
-                                </button>
-                            }
-                        </li>
-                    ))}
-                </ul>
+            <div className='flex flex-col flex-grow'>
+                <h1 className='flex text-[24px] text-white ml-14 mt-8'>Tasks</h1>
+                    <ul className='flex flex-col gap-4 ml-14 mr-14 mt-6 mb-6'>
+                        {areaSelectedId && goalSelectedId && tasks.filter((task) => task.goal_id === goalSelectedId).map((task) => (
+                            <li key={task.id} className='flex justify-start items-center gap-2'>
+                                <input type="checkbox" />
+                                <label className='absolute -left-full -top-full'>
+                                    {task.title}
+                                </label>
+                                <p className='text-white text-[10px]'>{task.title}</p>
+                                {task.area_id && 
+                                    <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
+                                        {areas.filter((area) => area.area_id === task.area_id).title}
+                                    </button>
+                                }
+                                {task.estimate && 
+                                    <button
+                                        type="button"
+                                        className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[8px]'
+                                        >
+                                        {task.estimate < 60 ? `${task.estimate} minutes` : `${task.estimate / 60} hours`}
+                                    </button>
+                                }
+                            </li>
+                        ))}
+                        {areaSelectedId && goalSelectedId === null && tasks.filter((task) => task.area_id === areaSelectedId).map((task) => (
+                            <li key={task.id} className='flex justify-start items-center gap-2'>
+                                <input type="checkbox" />
+                                <label className='absolute -left-full -top-full'>
+                                    {task.title}
+                                </label>
+                                <p className='text-white text-[10px]'>{task.title}</p>
+                                {task.area_id && 
+                                    <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
+                                        {areas.filter((area) => area.area_id === task.area_id).title}
+                                    </button>
+                                }
+                                {task.estimate && 
+                                    <button
+                                        type="button"
+                                        className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[8px]'
+                                        >
+                                        {task.estimate < 60 ? `${task.estimate} minutes` : `${task.estimate / 60} hours`}
+                                    </button>
+                                }
+                            </li>
+                        ))}
+                        {areaSelectedId === null && goalSelectedId === null && tasks.map((task) => (
+                            <li key={task.id} className='flex justify-start items-center gap-2'>
+                                <input type="checkbox" />
+                                <label className='absolute -left-full -top-full'>
+                                    {task.title}
+                                </label>
+                                <p className='text-white text-[10px]'>{task.title}</p>
+                                {task.area_id && 
+                                    <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
+                                        {areas.filter((area) => area.area_id === task.area_id).title}
+                                    </button>
+                                }
+                                {task.estimate && 
+                                    <button
+                                        type="button"
+                                        className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[8px]'
+                                        >
+                                        {task.estimate < 60 ? `${task.estimate} minutes` : `${task.estimate / 60} hours`}
+                                    </button>
+                                }
+                            </li>
+                        ))}
+                    </ul>
             </div>
         </div>
     </section>

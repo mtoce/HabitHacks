@@ -7,6 +7,7 @@ import { FaCog, FaAngry, FaDizzy, FaGrimace, FaGrin, FaGrinAlt, FaGrinBeam, FaGr
 
 
 const Nav = () => {
+
   return (
     <nav className='flex flex-col items-center justify-between bg-gray-700 w-20 pt-10 pb-10'>
         <div className='flex flex-col space-y-8 align-items'>
@@ -49,7 +50,10 @@ const Nav = () => {
             <FaSmile size={25} />
             <FaSmileBeam size={25} /> */}
             <FaCog size={25} fill="white"/>
-            <FaCirclePlus size={35} fill="white"/>
+            <FaCirclePlus 
+              size={35} 
+              fill="white"
+            />
         </div>
     </nav>
   )
