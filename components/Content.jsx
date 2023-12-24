@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { initTasks, initAreas, initGoals } from '@/constants'
-import { FaCircleArrowRight, FaCircleCheck, FaHouseChimney, FaBriefcase, FaGraduationCap, FaBasketShopping, FaClapperboard, FaPersonRunning } from "react-icons/fa6";
+import { FaCircleArrowRight, FaCircleCheck, FaPlus, FaHouseChimney, FaBriefcase, FaGraduationCap, FaBasketShopping, FaClapperboard, FaPersonRunning } from "react-icons/fa6";
+
 
 const Content = () => {
     
@@ -81,44 +82,80 @@ const Content = () => {
     console.log("goals: ", goals)
     console.log("areas: ", areas)
 
-    //   const handleCheck = async (id) => {
-    //     // Recreate the list of tasks from default state by checking if an task is checked by the user. Swap the checked status if it is checked and return the same task if it is not checked.
-    //     const listTasks = tasks.map((task) => task.id === id ? { ...task, checked: !task.checked } : task)
-    //     setTasks(listTasks);
-    
-    //     const myTask = listTasks.filter((task) => task.id === id)
-    //     const updateOptions = {
-    //       method: 'PATCH',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify({ checked: myTask[0].checked})
-    //     }
-    
-    //     const reqUrl = `${API_URL}/${id}`
-    //     const result = await apiRequest(reqUrl, updateOptions)
-    //     if (result) setFetchError(result)
-    //   }
-    
-    //   const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     if (!newTask) return;
-    //     addTask(newTask);
-    //     setNewTask('');
-    //   }
-    
-    //   const handleDelete = async (id) => {
-    //     // console.log(id)
-    //     const listTasks = tasks.filter((task) => task.id !== id)
-    //     setTasks(listTasks);
-    
-    //     const deleteOptions = { method: 'DELETE' }
-    //     const reqUrl = `${API_URL}/${id}`
-    //     const result = await apiRequest(reqUrl, deleteOptions)
-    //     if (result) setFetchError(result)
-    //   }
+    // TODO: Create a form for the user to select the defaults for the task added. Currently defaults are set by the application itself.
+    const newTaskForm = () => {
+        <form>
+            <label for="addNewTask">Add New Task</label>
+            <input type="checkbox" />
+            <textarea id="addNewTask" placeholder="New Task" autoFocus required>
+            </textarea>
+            <textarea type="text" placeholder="Additional Notes...">
+            </textarea>
+        </form>
+    }
 
-    // Whenever the Area changes, set the goalSelectedId to null
+    const addTask = async (title) => {
+        const id = tasks.length ? tasks[tasks.length - 1].id + 1 : 1;
+        const area_id = null // TODO: Add a dropdown option in the addTask Form for default task area ID
+        const goal_id = null // TODO: Add a dropdown option in the addTask Form for default task goal ID
+        const status = "later" // TODO: Add a dropdown option in the addTask Form for default task status
+        const previous_status = null
+        const checked = false
+        const estimate = null // TODO: Add a dropdown option in the addTask Form for default task estimate
+        const priority = null // TODO: Add a dropdown option in the addTask Form for default task priority
+        const myNewTask = { id, area_id, goal_id, status, previous_status, checked, estimate, priority, title };
+        const listTasks = [...tasks, myNewTask]
+        setTasks(listTasks);
+    
+        const postOptions = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(myNewTask)
+        }
+    
+        // apiRequest returns an error. That will be the result. If the result is not null then we set the FetchError equal to that result.
+        const result = await apiRequest(TASKS_API_URL, postOptions)
+        if (result) setFetchError(result)
+      }
+
+      const handleCheck = async (id) => {
+        // Recreate the list of tasks from default state by checking if a task is checked by the user. Swap the checked status if it is checked and return the same task if it is not checked.
+        const listTasks = tasks.map((task) => task.id === id ? { ...task, checked: !task.checked } : task)
+        setTasks(listTasks);
+    
+        const myTask = listTasks.filter((task) => task.id === id)
+        const updateOptions = {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ checked: myTask[0].checked})
+        }
+    
+        const reqUrl = `${TASKS_API_URL}/${id}`
+        const result = await apiRequest(reqUrl, updateOptions)
+        if (result) setFetchError(result)
+      }
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!newTask) return;
+        addTask(newTask);
+        setNewTask('');
+      }
+    
+      const handleDelete = async (id) => {
+        // console.log(id)
+        const listTasks = tasks.filter((task) => task.id !== id)
+        setTasks(listTasks);
+    
+        const deleteOptions = { method: 'DELETE' }
+        const reqUrl = `${TASKS_API_URL}/${id}`
+        const result = await apiRequest(reqUrl, deleteOptions)
+        if (result) setFetchError(result)
+      }
 
     const handleAreaClick = (area, goals) => {
         if (area["selected"] === false) {
@@ -159,20 +196,6 @@ const Content = () => {
         }
     }
 
-    // const handleAddTask = () => {
-    //     return (
-    //       <form>
-    //         <label for="addNewTask">Add New Task</label>
-    //         <textarea id="addNewTask">
-    //           <input type="checkbox" />
-    //           <input type="text" placeholder="New Task" autoFocus required/>
-    //           <input type="text" placeholder="Additional Notes..." />
-    //         </textarea>
-            
-    //       </form>
-    //   )
-    //   }
-
   return (
     <section className='flex flex-row flex-grow w-full h-full'>
         <div className='flex flex-col bg-gray-800'>
@@ -181,7 +204,7 @@ const Content = () => {
                     <FaCircleArrowRight size={20} fill="white"/>
                     <p className='text-white text-[14px]'>Next to work on</p>
                 </div>
-                <div className='flex justify-start items-center gap-2 ml-8'>
+                <div className='flex justify-start tasks-center gap-2 ml-8'>
                     <FaCircleCheck size={20} fill="white"/>
                     <p className='text-white text-[14px]'>Logbook</p>
                 </div>
@@ -261,7 +284,12 @@ const Content = () => {
         </div>
         <div className='flex flex-col flex-grow bg-gray-900'>
             <div className='flex flex-col flex-grow'>
-                <h1 className='flex text-[24px] text-white ml-14 mt-8'>Tasks</h1>
+                <div className='flex ml-14 mr-14  mt-8 justify-between items-center'>
+                    <h1 className='flex text-[24px] text-white '>Tasks</h1>
+                    <div className='hover:bg-gray-800 min-w-[20px] min-h-[20px] flex justify-center items-center rounded-md'>
+                        <FaPlus size={15} fill="white" onClick={() => addTask()}/>
+                    </div>
+                </div>
                     <ul className='flex flex-col gap-4 ml-14 mr-14 mt-6 mb-6'>
                         {areaSelectedId && goalSelectedId && tasks.filter((task) => task.goal_id === goalSelectedId).map((task) => (
                             <li key={task.id} className='flex justify-start items-center gap-2'>
