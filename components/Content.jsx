@@ -284,7 +284,7 @@ const Content = () => {
         </div>
         <div className='flex flex-col flex-grow bg-gray-900'>
             <div className='flex flex-col flex-grow'>
-                <div className='flex ml-14 mr-14  mt-8 justify-between items-center'>
+                <div className='flex ml-14 mr-14 mt-8 justify-between items-center'>
                     <h1 className='flex text-[24px] text-white '>Tasks</h1>
                     <div className='hover:bg-gray-800 min-w-[20px] min-h-[20px] flex justify-center items-center rounded-md'>
                         <FaPlus size={15} fill="white" onClick={toggleShowNewTaskForm}/>
@@ -298,7 +298,7 @@ const Content = () => {
                                 <label className='absolute -left-full -top-full'>
                                     {task.title}
                                 </label>
-                                <p className='text-white text-[10px]'>{task.title}</p>
+                                <p className='text-white text-[12px]'>{task.title}</p>
                                 {task.area_id && 
                                     <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
                                         {areas.filter((area) => area.area_id === task.area_id).title}
@@ -320,7 +320,7 @@ const Content = () => {
                                 <label className='absolute -left-full -top-full'>
                                     {task.title}
                                 </label>
-                                <p className='text-white text-[10px]'>{task.title}</p>
+                                <p className='text-white text-[12px]'>{task.title}</p>
                                 {task.area_id && 
                                     <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
                                         {areas.filter((area) => area.area_id === task.area_id).title}
@@ -342,7 +342,7 @@ const Content = () => {
                                 <label className='absolute -left-full -top-full'>
                                     {task.title}
                                 </label>
-                                <p className='text-white text-[10px]'>{task.title}</p>
+                                <p className='text-white text-[12px]'>{task.title}</p>
                                 {task.area_id && 
                                     <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
                                         {areas.filter((area) => area.area_id === task.area_id).title}
