@@ -286,8 +286,8 @@ const Content = () => {
             <div className='flex flex-col flex-grow'>
                 <div className='flex ml-14 mr-14 mt-8 justify-between items-center'>
                     <h1 className='flex text-[24px] text-white '>Tasks</h1>
-                    <div className='hover:bg-gray-800 min-w-[20px] min-h-[20px] flex justify-center items-center rounded-md'>
-                        <FaPlus size={15} fill="white" onClick={toggleShowNewTaskForm}/>
+                    <div className='group min-w-[20px] min-h-[20px] flex justify-center items-center rounded-md'>
+                        <FaPlus size={20} fill="white" className='group-hover:fill-gray-500' onClick={toggleShowNewTaskForm}/>
                     </div>
                 </div>
                 {showNewTaskForm && <NewTaskForm />}
@@ -298,7 +298,7 @@ const Content = () => {
                                 <label className='absolute -left-full -top-full'>
                                     {task.title}
                                 </label>
-                                <p className='text-white text-[12px]'>{task.title}</p>
+                                <p className='text-white text-[12px] pl-2'>{task.title}</p>
                                 {task.area_id && 
                                     <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
                                         {areas.filter((area) => area.area_id === task.area_id).title}
@@ -315,12 +315,12 @@ const Content = () => {
                             </li>
                         ))}
                         {areaSelectedId && goalSelectedId === null && tasks.filter((task) => task.area_id === areaSelectedId).map((task) => (
-                            <li key={task.id} className='flex justify-start items-center gap-2'>
+                            <li key={task.id} className='flex justify-start items-center gap-3'>
                                 <input type="checkbox" />
                                 <label className='absolute -left-full -top-full'>
                                     {task.title}
                                 </label>
-                                <p className='text-white text-[12px]'>{task.title}</p>
+                                <p className='text-white text-[12px] pl-2'>{task.title}</p>
                                 {task.area_id && 
                                     <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
                                         {areas.filter((area) => area.area_id === task.area_id).title}
@@ -329,7 +329,7 @@ const Content = () => {
                                 {task.estimate && 
                                     <button
                                         type="button"
-                                        className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[8px]'
+                                        className='bg-gray-700 rounded-xl text-white pl-2 pr-2 text-[10px]'
                                         >
                                         {task.estimate < 60 ? `${task.estimate} minutes` : `${task.estimate / 60} hours`}
                                     </button>
@@ -342,7 +342,7 @@ const Content = () => {
                                 <label className='absolute -left-full -top-full'>
                                     {task.title}
                                 </label>
-                                <p className='text-white text-[12px]'>{task.title}</p>
+                                <p className='text-white text-[12px] pl-2'>{task.title}</p>
                                 {task.area_id && 
                                     <button type="button" className='bg-gray-700 rounded-xl text-white text-[12px]'>
                                         {areas.filter((area) => area.area_id === task.area_id).title}
