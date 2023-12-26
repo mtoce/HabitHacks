@@ -9,6 +9,7 @@
         "checked": false,
         "estimate": 30,
         "priority": 2,
+        "progress": 0,
         "title": "Setup & structure initial mock data to use for frontend development of application"
       },
       {
@@ -20,6 +21,7 @@
         "checked": false,
         "estimate": 20,
         "priority": 2,
+        "progress": 0,
         "title": "Load the data from json server"
       },
       {
@@ -31,6 +33,7 @@
         "checked": false,
         "estimate": 30,
         "priority": 1,
+        "progress": 0,
         "title": "Create styling of each taskLineItem to be displayed once added to the taskList"
       },
       {
@@ -42,6 +45,7 @@
         "checked": false,
         "estimate": null,
         "priority": 1,
+        "progress": 0,
         "title": "Add + button to areas and goals for onClick event to add the respected element"
       },
       {
@@ -53,6 +57,7 @@
         "checked": false,
         "estimate": 45,
         "priority": 0,
+        "progress": 0,
         "title": "Create Area Form to add a new area of life"
       },
       {
@@ -64,6 +69,7 @@
         "checked": false,
         "estimate": 45,
         "priority": 0,
+        "progress": 0,
         "title": "Research different coding portfolios for inspiration - Note aspects I like and dislike for my own style"
       },
       {
@@ -75,6 +81,7 @@
         "checked": false,
         "estimate": 120,
         "priority": 0,
+        "progress": 0,
         "title": "Wireframe the portfolio from my research ideas"
       },
       {
@@ -86,6 +93,7 @@
         "checked": false,
         "estimate": 30,
         "priority": 0,
+        "progress": 0,
         "title": "Choose color scheme for portfolio"
       },
       {
@@ -97,6 +105,7 @@
         "checked": false,
         "estimate": 30,
         "priority": 0,
+        "progress": 0,
         "title": "Choose font theme for portfolio"
       },
       {
@@ -108,6 +117,7 @@
         "checked": false,
         "estimate": 20,
         "priority": 0,
+        "progress": 0,
         "title": "Research the proper steps to building a FullStack Application"
       }
     ],
@@ -115,12 +125,12 @@
         {
           "area_id": 1,
           "title": "Personal Tasks",
-          "selected": false
+          "checked": false
         },
         {
           "area_id": 2,
           "title": "Software Dev",
-          "selected": false
+          "checked": false
         }
         ],
       "goals": [
@@ -129,42 +139,42 @@
           "area_id": 1,
           "due": "92 Days",
           "title": "75 hard!",
-          "selected": false
+          "checked": false
         },
         {
           "goal_id": 2,
           "area_id": 1,
           "due": "383 Days",
           "title": "Recipe Book",
-          "selected": false
+          "checked": false
         },
         {
           "goal_id": 3,
           "area_id": 1,
           "due": null,
           "title": "Chores",
-          "selected": false
+          "checked": false
         },
         {
           "goal_id": 4,
           "area_id": 1,
           "due": null,
           "title": "Be more social",
-          "selected": false
+          "checked": false
         },
         {
           "goal_id": 5,
           "area_id": 2,
           "due": "32 Days",
           "title": "Build Portfolio Website",
-          "selected": false
+          "checked": false
         },
         {
           "goal_id": 6,
           "area_id": 2,
           "due": "48 Days",
           "title": "Habit Hacks App",
-          "selected": false
+          "checked": false
         }
         ]
 }

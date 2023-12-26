@@ -1,5 +1,5 @@
 import React from 'react'
-{ id, area_id, goal_id, status, previous_status, checked, estimate, priority, title }
+
 class NewTaskForm extends React.Component {
     constructor(props) {
       super(props);
@@ -39,7 +39,7 @@ class NewTaskForm extends React.Component {
     }
   
     handleSubmit(event) {
-      alert('Your favorite flavor is: ' + this.state.value);
+      alert('Status: ' + this.state.status + 'Description: ' + this.state.description + 'Estimate: ' + this.state.estimate + 'Priority: ' + this.state.priority + 'Progress: ' + this.state.progress);
       event.preventDefault();
     }
   

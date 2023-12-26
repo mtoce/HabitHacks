@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { initTasks, initAreas, initGoals } from '@/constants'
 import { FaCircleArrowRight, FaCircleCheck, FaPlus, FaHouseChimney, FaBriefcase, FaGraduationCap, FaBasketShopping, FaClapperboard, FaPersonRunning } from "react-icons/fa6";
+import NewTaskForm from './NewTaskForm';
 
 
 const Content = () => {
@@ -20,6 +21,8 @@ const Content = () => {
 
     const [areaSelectedId, setAreaSelectedId] = useState(null)
     const [goalSelectedId, setGoalSelectedId] = useState(null)
+
+    const [showNewTaskForm, setShowNewTaskForm] = useState(false)
 
     const TASKS_API_URL = 'http://localhost:3500/tasks'
     const GOALS_API_URL = 'http://localhost:3500/goals'
@@ -74,24 +77,19 @@ const Content = () => {
         }
         fetchAll()
       }, [])
+    
 
-    console.log("initTasks: ", initTasks)
-    console.log("initGoals: ", initGoals)
-    console.log("initAreas: ", initAreas)
-    console.log("tasks: ", tasks)
-    console.log("goals: ", goals)
-    console.log("areas: ", areas)
+    // console.log("tasks: ", tasks)
+    // console.log("goals: ", goals)
+    // console.log("areas: ", areas)
 
     // TODO: Create a form for the user to select the defaults for the task added. Currently defaults are set by the application itself.
+
     const newTaskForm = () => {
-        <form>
-            <label for="addNewTask">Add New Task</label>
-            <input type="checkbox" />
-            <textarea id="addNewTask" placeholder="New Task" autoFocus required>
-            </textarea>
-            <textarea type="text" placeholder="Additional Notes...">
-            </textarea>
-        </form>
+        <NewTaskForm />
+    }
+    const toggleShowNewTaskForm = () => {
+        setShowNewTaskForm(!showNewTaskForm)
     }
 
     const addTask = async (title) => {
@@ -103,6 +101,7 @@ const Content = () => {
         const checked = false
         const estimate = null // TODO: Add a dropdown option in the addTask Form for default task estimate
         const priority = null // TODO: Add a dropdown option in the addTask Form for default task priority
+        const progress = null // TODO: Add a dropdown option in the addTask Form for default task progress
         const myNewTask = { id, area_id, goal_id, status, previous_status, checked, estimate, priority, title };
         const listTasks = [...tasks, myNewTask]
         setTasks(listTasks);
@@ -119,6 +118,7 @@ const Content = () => {
         const result = await apiRequest(TASKS_API_URL, postOptions)
         if (result) setFetchError(result)
       }
+
 
       const handleCheck = async (id) => {
         // Recreate the list of tasks from default state by checking if a task is checked by the user. Swap the checked status if it is checked and return the same task if it is not checked.
@@ -158,40 +158,40 @@ const Content = () => {
       }
 
     const handleAreaClick = (area, goals) => {
-        if (area["selected"] === false) {
+        if (area["checked"] === false) {
             // set previously selected area's selected value to false if not null
             const prevSelArea = areas.find((area) => area["area_id"] === areaSelectedId)
             if (prevSelArea) {
-                prevSelArea["selected"] = false
+                prevSelArea["checked"] = false
             }
             // find the previously selected goal and unselect it if it exists.
             const prevSelGoal = goals.find((goal) => goal["goal_id"] === goalSelectedId)
             if (prevSelGoal) {
-                prevSelGoal["selected"] = false
+                prevSelGoal["checked"] = false
             }
-            area["selected"] = true
+            area["checked"] = true
             setAreaSelectedId(area["area_id"])
             setGoalSelectedId(null)
         }
     }
 
     const handleGoalClick = (goal, areas) => {
-        if (goal["selected"] === false) {
+        if (goal["checked"] === false) {
             const prevSelGoal = goals.find((goal) => goal["goal_id"] === goalSelectedId)
             console.log(prevSelGoal)
             if (prevSelGoal) {
-                prevSelGoal["selected"] = false
+                prevSelGoal["checked"] = false
             }
-            goal["selected"] = true
+            goal["checked"] = true
             // Need to fix and actually update the areas not just the variable I created here...
             const areaWithSelGoal = areas.find((area) => area["area_id"] === goal["area_id"])
             if (areaWithSelGoal) {
-                areaWithSelGoal["selected"] = true
+                areaWithSelGoal["checked"] = true
             }
             setGoalSelectedId(goal["goal_id"])
             setAreaSelectedId(goal["area_id"])
         }  else {
-            goal["selected"] = false
+            goal["checked"] = false
             setGoalSelectedId(null)
         }
     }
@@ -217,7 +217,7 @@ const Content = () => {
                             <li 
                                 key={area.area_id} 
                                 className={`flex flex-col rounded-lg pl-4 pr-4 ml-3 mr-3 pt-2 pb-2
-                                ${area.area_id === areaSelectedId ? 'bg-gray-900': 'bg-gray750'}`}
+                                ${area.area_id === areaSelectedId ? 'bg-gray-900' : 'bg-gray750'}`}
                                 onClick={() => handleAreaClick(area, goals)}
                                 >
                                 <label className='absolute -top-full -left-full'>
@@ -287,9 +287,10 @@ const Content = () => {
                 <div className='flex ml-14 mr-14  mt-8 justify-between items-center'>
                     <h1 className='flex text-[24px] text-white '>Tasks</h1>
                     <div className='hover:bg-gray-800 min-w-[20px] min-h-[20px] flex justify-center items-center rounded-md'>
-                        <FaPlus size={15} fill="white" onClick={() => addTask()}/>
+                        <FaPlus size={15} fill="white" onClick={toggleShowNewTaskForm}/>
                     </div>
                 </div>
+                {showNewTaskForm && <NewTaskForm />}
                     <ul className='flex flex-col gap-4 ml-14 mr-14 mt-6 mb-6'>
                         {areaSelectedId && goalSelectedId && tasks.filter((task) => task.goal_id === goalSelectedId).map((task) => (
                             <li key={task.id} className='flex justify-start items-center gap-2'>
