@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { initTasks, initAreas, initGoals } from '@/constants'
 import { FaCircleArrowRight, FaCircleCheck, FaPlus, FaHouseChimney, FaBriefcase, FaGraduationCap, FaBasketShopping, FaClapperboard, FaPersonRunning } from "react-icons/fa6";
 import NewTaskForm from './NewTaskForm';
-
+import apiRequest from './apiRequest';
 
 const Content = () => {
     
@@ -79,7 +79,7 @@ const Content = () => {
       }, [])
     
 
-    // console.log("tasks: ", tasks)
+    console.log("tasks: ", tasks)
     // console.log("goals: ", goals)
     // console.log("areas: ", areas)
 
@@ -338,7 +338,7 @@ const Content = () => {
                         ))}
                         {areaSelectedId === null && goalSelectedId === null && tasks.map((task) => (
                             <li key={task.id} className='flex justify-start items-center gap-2'>
-                                <input type="checkbox" />
+                                <input type="checkbox" onClick={handleCheck}/>
                                 <label className='absolute -left-full -top-full'>
                                     {task.title}
                                 </label>

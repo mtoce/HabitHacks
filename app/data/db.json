@@ -1,180 +1,180 @@
 {
-    "tasks": [
-      {
-        "id": 1,
-        "area_id": 2,
-        "goal_id": 6,
-        "status": "now",
-        "previous_status": "later",
-        "checked": false,
-        "estimate": 30,
-        "priority": 2,
-        "progress": 0,
-        "title": "Setup & structure initial mock data to use for frontend development of application"
-      },
-      {
-        "id": 2,
-        "area_id": 2,
-        "goal_id": 6,
-        "status": "now",
-        "previous_status": "later",
-        "checked": false,
-        "estimate": 20,
-        "priority": 2,
-        "progress": 0,
-        "title": "Load the data from json server"
-      },
-      {
-        "id": 3,
-        "area_id": 2,
-        "goal_id": 6,
-        "status": "now",
-        "previous_status": "later",
-        "checked": false,
-        "estimate": 30,
-        "priority": 1,
-        "progress": 0,
-        "title": "Create styling of each taskLineItem to be displayed once added to the taskList"
-      },
-      {
-        "id": 4,
-        "area_id": 2,
-        "goal_id": 6,
-        "status": "now",
-        "previous_status": "later",
-        "checked": false,
-        "estimate": null,
-        "priority": 1,
-        "progress": 0,
-        "title": "Add + button to areas and goals for onClick event to add the respected element"
-      },
-      {
-        "id": 5,
-        "area_id": 2,
-        "goal_id": 6,
-        "status": "later",
-        "previous_status": null,
-        "checked": false,
-        "estimate": 45,
-        "priority": 0,
-        "progress": 0,
-        "title": "Create Area Form to add a new area of life"
-      },
-      {
-        "id": 6,
-        "area_id": 2,
-        "goal_id": 5,
-        "status": "later",
-        "previous_status": null,
-        "checked": false,
-        "estimate": 45,
-        "priority": 0,
-        "progress": 0,
-        "title": "Research different coding portfolios for inspiration - Note aspects I like and dislike for my own style"
-      },
-      {
-        "id": 7,
-        "area_id": 2,
-        "goal_id": 5,
-        "status": "later",
-        "previous_status": null,
-        "checked": false,
-        "estimate": 120,
-        "priority": 0,
-        "progress": 0,
-        "title": "Wireframe the portfolio from my research ideas"
-      },
-      {
-        "id": 8,
-        "area_id": 2,
-        "goal_id": 5,
-        "status": "later",
-        "previous_status": null,
-        "checked": false,
-        "estimate": 30,
-        "priority": 0,
-        "progress": 0,
-        "title": "Choose color scheme for portfolio"
-      },
-      {
-        "id": 9,
-        "area_id": 2,
-        "goal_id": 5,
-        "status": "later",
-        "previous_status": null,
-        "checked": false,
-        "estimate": 30,
-        "priority": 0,
-        "progress": 0,
-        "title": "Choose font theme for portfolio"
-      },
-      {
-        "id": 10,
-        "area_id": 2,
-        "goal_id": 6,
-        "status": "later",
-        "previous_status": null,
-        "checked": false,
-        "estimate": 20,
-        "priority": 0,
-        "progress": 0,
-        "title": "Research the proper steps to building a FullStack Application"
-      }
-    ],
-      "areas": [
-        {
-          "area_id": 1,
-          "title": "Personal Tasks",
-          "checked": false
-        },
-        {
-          "area_id": 2,
-          "title": "Software Dev",
-          "checked": false
-        }
-        ],
-      "goals": [
-        {
-          "goal_id": 1,
-          "area_id": 1,
-          "due": "92 Days",
-          "title": "75 hard!",
-          "checked": false
-        },
-        {
-          "goal_id": 2,
-          "area_id": 1,
-          "due": "383 Days",
-          "title": "Recipe Book",
-          "checked": false
-        },
-        {
-          "goal_id": 3,
-          "area_id": 1,
-          "due": null,
-          "title": "Chores",
-          "checked": false
-        },
-        {
-          "goal_id": 4,
-          "area_id": 1,
-          "due": null,
-          "title": "Be more social",
-          "checked": false
-        },
-        {
-          "goal_id": 5,
-          "area_id": 2,
-          "due": "32 Days",
-          "title": "Build Portfolio Website",
-          "checked": false
-        },
-        {
-          "goal_id": 6,
-          "area_id": 2,
-          "due": "48 Days",
-          "title": "Habit Hacks App",
-          "checked": false
-        }
-        ]
+  "tasks": [
+    {
+      "id": 1,
+      "area_id": 2,
+      "goal_id": 6,
+      "status": "now",
+      "previous_status": "later",
+      "checked": true,
+      "estimate": 30,
+      "priority": 2,
+      "progress": 0,
+      "title": "Setup & structure initial mock data to use for frontend development of application"
+    },
+    {
+      "id": 2,
+      "area_id": 2,
+      "goal_id": 6,
+      "status": "now",
+      "previous_status": "later",
+      "checked": true,
+      "estimate": 20,
+      "priority": 2,
+      "progress": 0,
+      "title": "Load the data from json server"
+    },
+    {
+      "id": 3,
+      "area_id": 2,
+      "goal_id": 6,
+      "status": "now",
+      "previous_status": "later",
+      "checked": true,
+      "estimate": 30,
+      "priority": 1,
+      "progress": 0,
+      "title": "Create styling of each taskLineItem to be displayed once added to the taskList"
+    },
+    {
+      "id": 4,
+      "area_id": 2,
+      "goal_id": 6,
+      "status": "now",
+      "previous_status": "later",
+      "checked": true,
+      "estimate": null,
+      "priority": 1,
+      "progress": 0,
+      "title": "Add + button to areas and goals for onClick event to add the respected element"
+    },
+    {
+      "id": 5,
+      "area_id": 2,
+      "goal_id": 6,
+      "status": "later",
+      "previous_status": null,
+      "checked": true,
+      "estimate": 45,
+      "priority": 0,
+      "progress": 0,
+      "title": "Create Area Form to add a new area of life"
+    },
+    {
+      "id": 6,
+      "area_id": 2,
+      "goal_id": 5,
+      "status": "later",
+      "previous_status": null,
+      "checked": false,
+      "estimate": 45,
+      "priority": 0,
+      "progress": 0,
+      "title": "Research different coding portfolios for inspiration - Note aspects I like and dislike for my own style"
+    },
+    {
+      "id": 7,
+      "area_id": 2,
+      "goal_id": 5,
+      "status": "later",
+      "previous_status": null,
+      "checked": false,
+      "estimate": 120,
+      "priority": 0,
+      "progress": 0,
+      "title": "Wireframe the portfolio from my research ideas"
+    },
+    {
+      "id": 8,
+      "area_id": 2,
+      "goal_id": 5,
+      "status": "later",
+      "previous_status": null,
+      "checked": false,
+      "estimate": 30,
+      "priority": 0,
+      "progress": 0,
+      "title": "Choose color scheme for portfolio"
+    },
+    {
+      "id": 9,
+      "area_id": 2,
+      "goal_id": 5,
+      "status": "later",
+      "previous_status": null,
+      "checked": false,
+      "estimate": 30,
+      "priority": 0,
+      "progress": 0,
+      "title": "Choose font theme for portfolio"
+    },
+    {
+      "id": 10,
+      "area_id": 2,
+      "goal_id": 6,
+      "status": "later",
+      "previous_status": null,
+      "checked": true,
+      "estimate": 20,
+      "priority": 0,
+      "progress": 0,
+      "title": "Research the proper steps to building a FullStack Application"
+    }
+  ],
+  "areas": [
+    {
+      "area_id": 1,
+      "title": "Personal Tasks",
+      "checked": false
+    },
+    {
+      "area_id": 2,
+      "title": "Software Dev",
+      "checked": false
+    }
+  ],
+  "goals": [
+    {
+      "goal_id": 1,
+      "area_id": 1,
+      "due": "92 Days",
+      "title": "75 hard!",
+      "checked": false
+    },
+    {
+      "goal_id": 2,
+      "area_id": 1,
+      "due": "383 Days",
+      "title": "Recipe Book",
+      "checked": false
+    },
+    {
+      "goal_id": 3,
+      "area_id": 1,
+      "due": null,
+      "title": "Chores",
+      "checked": false
+    },
+    {
+      "goal_id": 4,
+      "area_id": 1,
+      "due": null,
+      "title": "Be more social",
+      "checked": false
+    },
+    {
+      "goal_id": 5,
+      "area_id": 2,
+      "due": "32 Days",
+      "title": "Build Portfolio Website",
+      "checked": false
+    },
+    {
+      "goal_id": 6,
+      "area_id": 2,
+      "due": "48 Days",
+      "title": "Habit Hacks App",
+      "checked": false
+    }
+  ]
 }
