@@ -1,16 +1,16 @@
-import NextAuth from 'next-auth'
-import GoogleProvider from 'next-auth/providers/google'
+// import NextAuth from 'next-auth'
+// import GoogleProvider from 'next-auth/providers/google'
 // import AppleProvider from 'next-auth/providers/apple'
 // import FacebookProvider from 'next-auth/providers/facebook'
 // import EmailProvider from 'next-auth/providers/email'
 
-const handler = NextAuth({
-  providers: [
+// const handler = NextAuth({
+//   providers: [
     // OAuth authentication providers...
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_ID,
+    //   clientSecret: process.env.GOOGLE_SECRET
+    // }),
     // AppleProvider({
     //   clientId: process.env.APPLE_ID,
     //   clientSecret: process.env.APPLE_SECRET
@@ -24,7 +24,7 @@ const handler = NextAuth({
     //   server: process.env.MAIL_SERVER,
     //   from: 'NextAuth.js <no-reply@example.com>'
     // }),
-  ],
+  // ],
   // callbacks: {
   //   async session({ session }) {
   //     // Check the session to see if user is logged in
@@ -56,7 +56,7 @@ const handler = NextAuth({
   //   }
   // },
   // secret: process.env.NEXT_AUTH_SECRET,
-  }
-)
+//   }
+// )
 
-export { handler as GET, handler as POST }
+// export { handler as GET, handler as POST }
